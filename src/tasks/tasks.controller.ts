@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { CreateTaskDto } from './dto/create-task.dto';
 import { Task } from './task.model';
 import { TasksService } from './tasks.service';
 
@@ -13,12 +14,9 @@ export class TasksController {
 
   // send req post để tạo Task new
   @Post()
-  createTask(
-    @Body('title') title: string,
-    @Body('description') description: string,
-  ): Task {
-    // gọi service truyền dữ liệu qua service để lưu lại
-    return this.tasksService.createTask(title, description);
+  createTask(@Body() createTaskDto: CreateTaskDto): Task {
+    // ở đây gọi createTask từ service
+    return this.tasksService.createTask(createTaskDto);
     // khi send req post thì nhận lại
     //   {
     //     "id": "a446c39f-858a-4f8c-b5fd-96c7406ca6f0",

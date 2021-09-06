@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+// tạo ra 1 đối tượng task
 export interface Task {
   id: string;
   title: string;
