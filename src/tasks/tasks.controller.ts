@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { Task } from './task.model';
 import { TasksService } from './tasks.service';
@@ -7,12 +7,20 @@ import { TasksService } from './tasks.service';
 export class TasksController {
   constructor(private tasksService: TasksService) {}
 
+  // [GET] /tasks
   @Get()
   getAllTasks(): Task[] {
     return this.tasksService.getAllTasks();
   }
 
+  // [GET] /tasks/:id
+  @Get('/:id')
+  getTaskById(@Param('id') id: string): Task {
+    return this.tasksService.getTaskById(id);
+  }
+
   // send req post để tạo Task new
+  // [POST] /tasks
   @Post()
   createTask(@Body() createTaskDto: CreateTaskDto): Task {
     // ở đây gọi createTask từ service
