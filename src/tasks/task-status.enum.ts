@@ -1,11 +1,11 @@
 /* eslint-disable prettier/prettier */
 // tạo ra 1 đối tượng task
-export interface Task {
-  id: string;
-  title: string;
-  description: string;
-  status: TaskStatus;
-}
+// export interface Task {
+//   id: string;
+//   title: string;
+//   description: string;
+//   status: TaskStatus;
+// }
 
 export enum TaskStatus {
   OPEN = 'OPEN',
